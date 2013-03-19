@@ -1,7 +1,7 @@
 (function() {
 
     if(typeof STALK == 'undefined') {
-        loadScript('http://ec2-67-202-33-0.compute-1.amazonaws.com/stalk.js', function() {
+        loadScript('http://www.stalk.io/stalk.js', function() {
             STALK.init();
         });
     }
