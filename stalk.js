@@ -75,7 +75,7 @@ var STALK_utils = {
             };
         }
         script.src = url + '&callback='+callbackStr+'&_noCacheIE=' + (new Date()).getTime();
-        console.log(script.src);
+        
         //document.getElementsByTagName("head").item(0).removeChild(script);
         document.getElementsByTagName("head")[0].appendChild(script);
 
@@ -101,7 +101,7 @@ var STALK_utils = {
 		for ( var i = 0; i < cookies.length; i++) {
 			var keyValues = cookies[i].split("=");
 			if (keyValues[0] == "STALK_USER") {
-				console.log(keyValues[1]);
+				
 				return JSON.parse(unescape(keyValues[1]));
 			}
 		}
@@ -113,7 +113,7 @@ var STALK_utils = {
 		for ( var i = 0; i < cookies.length; i++) {
 			var keyValues = cookies[i].split("=");
 			if (keyValues[0] == "STALK") {
-				console.log(unescape(keyValues[1]));
+				//console.log(unescape(keyValues[1]));
 			}
 		}
 		return {};
@@ -409,7 +409,8 @@ var STALK_window = {
         document.getElementById(this.rootDivName+'_options').innerHTML = '<a href="javascript:void(0)" onclick="javascript:return STALK.logout();" class="stalk_tooltip" title="Logout from '+target+'"><img src="'+this.imageServer+'/img/logout.png"></a>';
 
         var div_textarea = document.getElementById(this.rootDivName+'_textarea');
-        div_textarea.focus();
+
+        if(div_input.style.display  != 'none') div_textarea.focus();
         div_textarea.value = div_textarea.value;
         
         this.isLogined = true;
@@ -493,26 +494,27 @@ var STALK = (function(CONF, UTILS, WIN) {
     /*** PRIAVTE AREA ***/
 
 	var fn_init = function(){
-    	console.log(" # 1. fn_init \n\t"+JSON.stringify(CONF));
+    	//console.log(" # 1. fn_init \n\t"+JSON.stringify(CONF));
         UTILS.loadJson(CONF.httpUrl+'/node?refer='+CONF.refer, 'STALK.callbackInit');
     };
     var fn_reInit = function(){
-    	console.log(" # 1. fn_init \n\t"+JSON.stringify(CONF));
+    	//console.log(" # 1. fn_init \n\t"+JSON.stringify(CONF));
         UTILS.loadJson(CONF.httpUrl+'/node?refer='+CONF.refer, 'STALK.callbackSocketCallback');
     };
 
     var fn_callbackInit = function(data){
 
-    	console.log(" # 2. callbackInit \n\t"+JSON.stringify(data));
+    	//console.log(" # 2. callbackInit \n\t"+JSON.stringify(data));
     	
     	if(data.status != "ok"){
-			console.log("ERROR");
+			//console.log("ERROR");
     		return;
     	}
     	
         CONF.serverInfo = data;
 
-        WIN.initWin(CONF.divName, CONF.httpUrl);
+        //WIN.initWin(CONF.divName, CONF.httpUrl);
+        WIN.initWin(CONF.divName, 'http://stalk-io.github.com');
         
         CONF.user = STALK_utils.getUserInfo();
         //console.log("USER : "+JSON.stringify(user));
@@ -533,7 +535,7 @@ var STALK = (function(CONF, UTILS, WIN) {
     	
     	if(data){ // re connect !!
 
-        	console.log(" # 2(2). callbackSocketCallback \n\t"+JSON.stringify(data));
+        	//console.log(" # 2(2). callbackSocketCallback \n\t"+JSON.stringify(data));
     		if(data.status != "ok"){
     			// Error is occured!!
     			if(WIN.isShowRootDiv()){
@@ -559,7 +561,7 @@ var STALK = (function(CONF, UTILS, WIN) {
         };
         CONF.sock.onmessage = function(e) {
         	
-            console.log(' ---- message : '+e);
+            //console.log(' ---- message : '+e);
             
             var resJson = JSON.parse(e.data);
             if(resJson.action == "JOIN"){
@@ -596,7 +598,7 @@ var STALK = (function(CONF, UTILS, WIN) {
             
         };
         CONF.sock.onclose = function() {
-            console.log('close');
+            //console.log('close');
             fn_reInit();
         };
     };
