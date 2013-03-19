@@ -45,7 +45,7 @@
 	<span class="label label-success smallBtn">&nbsp;Comments &nbsp;</span>
 </a>
 <a href="#contactModal" role="button" data-toggle="modal">
-	<span class="label label-info smallBtn">&nbsp;Contact Author &nbsp;</span>
+	<span class="label smallBtn">&nbsp;Contact Author &nbsp;</span>
 </a>
 		</p>
 		<h1 class="heading">&lt;stalk.io&gt;</h1>
@@ -253,13 +253,15 @@ STALK.init();
 			</div>
 			<div class="modal-body">
 				 
-
-			<div class="input-append">
-				<span class="add-on">http://www.stalk.io/dashboard?site=</span>
-				<input id="urlDashboard" type="text" placeholder="http://example.com">
-				<button id="btnDashboard" class="btn btn-info" type="button">Go !! </button>
-			</div>
-				
+				First, <strong>install this stalk service</strong> 
+				<a href="#installModal" role="button" class="btn btn-info btn-small" data-toggle="modal">How to Install</a>
+				<br/>
+				If you have already applied, Let's go to the <strong>dashboard page</strong>.<br><br>
+				<div class="input-append">
+					<span class="add-on">http://www.stalk.io/dashboard?site=</span>
+					<input id="urlDashboard" type="text" placeholder="http://example.com">
+					<button id="btnDashboard" class="btn btn-info" type="button">Go !! </button>
+				</div>
 
 			</div>
 			<div class="modal-footer">
@@ -308,6 +310,20 @@ STALK.init();
 				}
 
 				$(location).attr('href', 'dashboard.html?site='+urlStr);
+			}else{
+					var sel = $('#urlDashboard')
+					sel.popover({
+						trigger: 'manual',
+						placement: 'top',
+						content: 'Please enter a valid URL.'
+					})
+					sel.popover('show');
+
+					setTimeout(function() {$("#urlDashboard").popover('hide');;}, 1500);
+
+					sel.focus();
+
+					return false;
 			}
 
 		});
@@ -322,6 +338,10 @@ STALK.init();
 		$('.carousel').carousel({
 			interval: 6000
 		});
+
+		$('#installModal').on('show', function () {
+		 	$('#monitorModal').modal('hide');
+		})
 
 /*
 		$("#myCarousel").bind("slid", function(){
