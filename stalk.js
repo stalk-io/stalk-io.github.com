@@ -513,8 +513,8 @@ var STALK = (function(CONF, UTILS, WIN) {
     	
         CONF.serverInfo = data;
 
-        //WIN.initWin(CONF.divName, CONF.httpUrl);
-        WIN.initWin(CONF.divName, 'http://stalk-io.github.com');
+        WIN.initWin(CONF.divName, CONF.httpUrl);
+        //WIN.initWin(CONF.divName, 'http://stalk-io.github.com');
         
         CONF.user = STALK_utils.getUserInfo();
         //console.log("USER : "+JSON.stringify(user));

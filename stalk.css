@@ -10,7 +10,7 @@
 }
 
 .stalk_head {
-	cursor:hand;
+	cursor: pointer;
 	background-color: #2d2d2d;
 	padding: 7px;
 	color: #ffffff;
@@ -143,6 +143,7 @@
 }
 
 .stalk_title {
+	color: #ffffff;
 	font-weight: bold;
 	float: left;
 }

@@ -19,7 +19,7 @@ function reloadPage(u){
 	}
 	
 	$.ajax({
-		url: 'http://ec2-67-202-33-0.compute-1.amazonaws.com:7777/list?site=' + uu , //encodeURIComponent(u),
+		url: 'http://www.stalk.io:7777/list?site=' + uu , //encodeURIComponent(u),
 		data: {},
 		dataType: 'jsonp',
 		crossDomain: 'true',
