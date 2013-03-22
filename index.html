@@ -1,16 +1,41 @@
-<script>
-  function getWindowSize(){
-  var w = window,
-		d = document,
-		e = d.documentElement,
-		g = d.getElementsByTagName('body')[0],
-		x = w.innerWidth || e.clientWidth || g.clientWidth,
-		y = w.innerHeight|| e.clientHeight|| g.clientHeight;
-	
-	return {width:x, height:y};
-}
+<!DOCTYPE html>
+<!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<html lang="en" xmlns="http://www.w3.org/1999/html"> <!--<![endif]-->
+<head>
+	<meta charset="utf-8">
+	<title>stalk.io - a social web chat service for your web pages.</title>
 
-var wSize = getWindowSize();
-alert(wSize.width+" : "+wSize.height);
-  //window.location = "/intro";
-</script>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="description" content="">
+	<meta name="author" content="John Kim, yohany@gmail.com">
+
+	<link href="http://fonts.googleapis.com/css?family=PT+Sans:700,400&subset=cyrillic" rel="stylesheet">
+	<link href="css/bootstrap.min.css" 				rel="stylesheet">
+	<link href="css/bootstrap-responsive.min.css" 	rel="stylesheet">
+	<link rel="shortcut icon" href="favicon.png">
+
+</head>
+<body>
+	<div class="container">
+	<div class="row-fluid">
+	  <div class="span4">
+	  	<img src="http://stalk-io.github.com/log350x180.png">
+	  </div>
+	  <div class="span8">
+	  	<blockquote class="pull-right">
+		  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+		  <small>Someone famous <cite title="Source Title">Source Title</cite></small>
+		</blockquote>
+	  </div>
+	</div>
+
+		
+	</div>
+	<script src="js/jquery-1.9.0.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+</body>
+</html>
