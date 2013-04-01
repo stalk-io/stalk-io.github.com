@@ -6,6 +6,7 @@ var PageList = function() {
 	var beforePageList = [];
 	var siteUrl = "";
 	var charsetQuery = "";
+	var getTitleUrl = "";
 	
     return {
     	init: init,
@@ -13,14 +14,15 @@ var PageList = function() {
         getPageTitle: getPageTitle
     };
     
-    function init(selName, argSiteUrl, c) {
+    function init(selName, argSiteUrl, gtu, c) {
     	listSelector = $("#"+selName);
     	siteUrl = argSiteUrl; 
+    	getTitleUrl = gtu;
 
 		if(c == "null"){
 			charsetQuery = "";
 		}else{
-			charsetQuery = "and charset = '"+c+"'";
+			charsetQuery = "&c="+c+"'";
 		}
     	
 		
@@ -108,10 +110,8 @@ var PageList = function() {
 
     function getPageTitle( p ) {
     	
-    	var yql = 'http://query.yahooapis.com/v1/public/yql?q=' + encodeURIComponent("select content from html where url = '"+(siteUrl+p)+"' "+charsetQuery+" and xpath = '//title'") + '&format=json';
-    	
     	$.ajax({
-    		url: yql,
+    		url: getTitleUrl+"?q="+u+charsetQuery,
     		data: {},
     		dataType: 'jsonp',
     		crossDomain: 'true',
@@ -139,8 +139,8 @@ var PageList = function() {
                 $('#BTN_'+jqSelector(p)).html('<button onclick="PageList.getPageTitle(\''+p+'\');" class="btn btn-small btn-danger" type="button">Get page title</button> &nbsp;&nbsp; '+errorMessage);
             },
     		success: function (data) {
-    			if(parseInt(data.query.count, 10) > 0){
-    				$('#BTN_'+jqSelector(p)).html('<a href="'+(siteUrl+p)+'" target="_black">'+data.query.results.title+'</a>');
+    			if(data.status == "ok"){
+    				$('#BTN_'+jqSelector(p)).html('<a href="'+(siteUrl+p)+'" target="_black">'+data.title+'</a>');
     			}else{
     				$('#BTN_'+jqSelector(p)).html('<button onclick="PageList.getPageTitle(\''+p+'\');" class="btn btn-small btn-danger" type="button">Get page title</button> &nbsp;&nbsp; Error is occured. Try again later.');
     			}
