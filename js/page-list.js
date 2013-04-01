@@ -111,7 +111,7 @@ var PageList = function() {
     function getPageTitle( p ) {
     	
     	$.ajax({
-    		url: getTitleUrl+"?q="+p+charsetQuery,
+    		url: getTitleUrl+"?q="+(siteUrl + p)+charsetQuery,
     		data: {},
     		dataType: 'jsonp',
     		crossDomain: 'true',
