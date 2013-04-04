@@ -1,94 +1,214 @@
 <!DOCTYPE html>
-<!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
-<!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
-<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
-<!--[if (gte IE 9)|!(IE)]><!-->
-<html lang="en" xmlns="http://www.w3.org/1999/html"> <!--<![endif]-->
-<head>
-	<meta charset="utf-8">
-	<title>stalk.io - a social web chat service for your web pages.</title>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>stalk.io, social live web chat</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="social live web chat">
+    <meta name="author" content="stalk.io">
 
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-	<meta name="description" content="">
-	<meta name="author" content="John Kim, yohany@gmail.com">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap-responsive.min.css" rel="stylesheet">
+    <link href="css/main.css" rel="stylesheet">
+    <link href="css/prettify.css"				    rel="stylesheet">
 
-	<link href="http://fonts.googleapis.com/css?family=PT+Sans:700,400&subset=cyrillic" rel="stylesheet">
-	<link href="css/bootstrap.min.css" 				rel="stylesheet">
-	<link href="css/bootstrap-responsive.min.css" 	rel="stylesheet">
-	<link rel="shortcut icon" href="favicon.png">
-	<style type="text/css">
-	html {
-	    height: 100%;
-	}
-	body {
-	    	font: 20px/1.4 'PT Sans', sans-serif;
-		height: 100%; 
-  		vertical-align: middle;
-  		margin-right: -0.25em; /* Adjusts for spacing */
-	}
-	.desc blockquote {
-		vertical-align: middle;	
-		text-align: center;
-	}
-	.logo{
-	    text-align: center;
-	}
 
-	</style>
+  	<link href='http://fonts.googleapis.com/css?family=Titillium+Web:400,700,700italic' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
 
-</head>
-<body>
-	<div class="container">
-	<br><br><br>
-	<div class="row centered">
-	  <div class="span12 logo">
-	  
-	  	<pre>
-        _             _   _          _         
-       | |           | | | |        (_)        
-  ___  | |_    __ _  | | | | __      _    ___  
- / __| | __|  / _` | | | | |/ /     | |  / _ \ 
- \__ \ | |_  | (_| | | | |   <   _  | | | (_) |
- |___/  \__|  \__,_| |_| |_|\_\ (_) |_|  \___/ 
-	  	</pre>
-	  	<!-- a href="/intro">
-	  	<img src="http://stalk-io.github.com/log350x180.png">
-	  		
-	  	</a -->
-	  </div>
-	</div>
-	<div class="row centered">
-	  <div class="span12 desc">
-	  	<br>
-		  <p class="text-center">
+	<style>
+      body {
+        padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+      }
+    </style>
 
-		  	This is <strong>a live web chat service</strong> for your own web pages.
-		  	<br>
-		  	You can check the number of visitor in real-time 
-		  	<br>
-		  	and chat with visitors after social login. 
-		  	<br>
-		  </p>
-	  </div>
-	</div>
-	<div class="row centered">
-	  <div class="span12 logo">
-	  	<button id="gogo" class="btn btn-large btn-inverse" type="button">&nbsp; Let's Go !! &nbsp;</button>
-	  </div>
-	</div>
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
 
-	</div>
-	<script src="js/jquery-1.9.0.min.js"></script>
-	<script src="js/bootstrap.min.js"></script>
+    <!-- Le fav and touch icons -->
+    <link rel="shortcut icon" href="assets/ico/favicon.ico">
+    <!--link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/ico/apple-touch-icon-144-precomposed.png" -->
+    <!--link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/ico/apple-touch-icon-114-precomposed.png" -->
+    <!--link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/apple-touch-icon-72-precomposed.png" -->
+    <!--link rel="apple-touch-icon-precomposed" href="assets/ico/apple-touch-icon-57-precomposed.png" -->
 
-	<script language="javascript">
-	$(function() {
-		$('#gogo').click(function(){
-		   document.location.href='/intro';
-		})
-	});
+
+  
+  
+  </head>
+
+  <body>
+  
+    <!-- Navigation Bar -->
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="brand" href="#">stalk.io</a>
+          <div class="nav-collapse collapse">
+            <ul class="nav">
+              <li class="active"><a href="#">About</a></li>
+              <li><a href="#install">Install</a></li>
+              <li><a href="#contact">Contact</a></li>
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
+
+	<section id="about"><br><br></section>
+    <div class="container">
+    	<div class="row">
+    		<div class="span6">
+    				<!-- img src="img/logo.png" alt="stalk.io" --> 
+    				<h1>stalk.io</h1>
+    				<h2>live web chat service </h2>
+    			<p>It’s a useful communication tool for your web site that lets you create free, multi-user live chat with no Active-X and no plugins, just by very simple installation. <br><br>
+    				Anyone who visits the same URL in your web site joins the chat.</p>
+    		</div><!-- span6 -->
+    		
+    		<div class="span6">
+    			
+    			<iframe src="http://player.vimeo.com/video/63327878?title=0&amp;byline=0&amp;portrait=0&amp;color=c9ff23" width="500" height="349" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+    		</div><!-- span6 -->
+    	</div><!-- row -->
+		<br>
+		<br>
+    </div> <!-- /container -->
+    
+    <!-- Single Item Image -->
+    <div id="example">
+		<div class="container">
+			<br>
+			<h2>with Social Network Service</h2>
+			<p>Those who access your web site will be able to talk to each other by logging in <strong>Facebook</strong> / <strong>Twitter</strong> / <strong>Google+</strong>.</p>
+			<img src="assets/img/example.png" alt="">
+			<br>
+			<hr>
+			<h2>for Every Web Browsers</h2>
+			<p>This service works in <strong>IE 6+, chrome, safari and all mobile browsers</strong>. <br/><em>" Cross Browser Compatibility "</em><br/></p>
+			<img src="assets/img/example.png" alt="">
+		</div><!-- container -->
+    </div><!-- example -->
+		<br>
+	
+	<!-- About Section Begins -->		
+    	<section id="install"><br><br></section>
+    	<div id="aboutwrap">
+    		<div class="container">
+				<h2>How to install</h2>
+				<h3>Very simple scripts that you can add to your Web pages in minutes, no knowing coding required.
+				Just copy the script code and paste it into your HMTL code</h3>
+				<br>
+				<hr>
+				<br>
+				<div class="row">
+					<div class="span1">
+					</div>
+					<div class="span11">
+						<p>Put the tags and the javascript codes before the last <code>&lt;/body&gt;</code> tag in your HTML page</p>
+						<pre class="prettyprint linenums text-left">
+&lt;script type=&quot;text/javascript&quot; src=&quot;http://www.stalk.io/stalk.js&quot; charset=&quot;utf-8&quot; &gt;&lt;/script&gt;
+&lt;script language=&quot;javascript&quot;&gt;
+STALK.init();
+&lt;/script&gt;</pre>
+						<p>How <strong>SIMPLE</strong>, isn't it?</p>
+
+						
+						<!-- br>
+						<hr>
+						<br>
+						<p><b>For test or dynamic installation ? </b><br>Just drag this button <a href="javascript:(function(){var%20s%20=%20document.createElement('script');s.type='text/javascript';document.body.appendChild(s);s.src='http://www.stalk.io/stalk-bookmark.js?' + (+new Date());})();" class="btn btn-inverse">Let's Chat</a> onto your browser's Bookmarks Bar and you'll be ready to chat</p>
+						<p>And then, Click the bookmark icon after moving to the other web site you wish.</p -->
+
+					</div>
+				</div>
+
+    		</div><!-- End aboutwrap -->
+		</div><!-- End Container -->
+		<div id="example">
+			<div class="container">
+				<br>
+				<h4>You can install this right where you want it.  For Wordpress, Tumblr, Blogger and your Any Web Sites</h4>
+				<p>
+					You can check out <a href="http://stalk-io.blogspot.com/2013/03/InstallLiveChatServiceForYourBlog.html" target="_blank">this link</a> 
+					or watch <a href="https://vimeo.com/63327878" target="_blank">this video</a> for more detail. 
+				</p>
+			</div><!-- container -->
+    	</div><!-- example -->
+		<br>
+		
+	<!-- Contact Section Begins -->
+		<section id="contact"></section>
+
+		<div id="footerwrap">
+			<div class="container">
+			<br><br>
+			<h2>CONTACT</h2>
+				<br>
+				<div class="row">
+					<div class="span4">
+						<h3>Author Email</h3>
+						<h4><a href="mailto:yohany@gmail.com">yohany@gmail.com</a></h4>
+					</div>
+					
+					<div class="span8">
+						<h3>Facebook</h3>
+						<h4><a href="http://www.facebook.com/stalk.io" target="_blank">www.facebook.com/stalk.io</a></h4>
+						<h4><a href="http://www.facebook.com/JohnKim0331" target="_blank">www.facebook.com/JohnKim0331</a></h4>
+					</div>
+
+				</div>
+				<br><br><hr><br>
+				
+				<div class="row">
+					<div class="span12">
+					<h4>
+					Please donate to make it available to everyone for free <strong>stalk.io</strong> service.	
+					</h4>
+					<br>
+<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+<input type="hidden" name="cmd" value="_s-xclick">
+<input type="hidden" name="hosted_button_id" value="KNYRHWYU6SAUA">
+<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+</form>
+
+					</div>
+				</div>
+				<br><br>
+				
+				<div class="row">
+					<div class="span12">
+						<img src="img/logo.png" alt="">
+					</div>
+				</div>
+				<br>
+
+
+			</div><!-- container -->
+		</div><!-- footerwrap -->
+
+
+    <!-- javascript
+    ================================================== -->
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script src="js/prettify.min.js"	></script>
+
+    
+	<script type="text/javascript" charset="utf-8">
+	  $(document).ready(function(){
+		window.prettyPrint && prettyPrint();
+	  });
 	</script>
 
-</body>
+  </body>
 </html>
