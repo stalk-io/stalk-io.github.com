@@ -1,21 +1,4 @@
 
-body {
-  font: 12px/1.7em 'Open Sans', arial, sans-serif;
-  background: #FFF;
-  padding-bottom: 40px;
-  color: #5a5a5a;
-}
-
-.title {
-  padding-bottom: 5px;
-  margin-bottom: 1em;
-  border-bottom: 1px dotted #CCC;
-}
-
-h3 {
-  font-size: 18px;
-}
-
 #flotTip {
   padding: 3px 6px !important;
   color: #FFF !important;

@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>stalk.io, social live web chat</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="social live web chat">
+	<meta name="author" content="stalk.io">
+
+	<link href="http://stalk-io.github.com/css/bootstrap.min.css" 				rel="stylesheet">
+	<link href="http://stalk-io.github.com/css/bootstrap-responsive.min.css" 	rel="stylesheet">
+	<link href="http://stalk-io.github.com/css/main.css" 						rel="stylesheet">
+	<link href="http://stalk-io.github.com/css/dashboard.css" 					rel="stylesheet">
+	<link href="http://stalk-io.github.com/css/dashboard-responsive.css" 		rel="stylesheet">
+
+
+	<link href='http://fonts.googleapis.com/css?family=Titillium+Web:400,700,700italic' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+
+	<style>
+	body {
+		padding-top: 60px;
+	}
+	</style>
+
+<!--[if lt IE 9]>
+<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+
+
+</head>
+
+<body>
+
+	<!-- Navigation Bar -->
+	<div class="navbar navbar-inverse navbar-fixed-top">
+		<div class="navbar-inner">
+			<div class="container">
+				<a class="brand" href="http://www.stalk.io">stalk.io</a>
+				|
+				monitoring page
+			</div>
+		</div>
+	</div>
+
+	<div id="aboutwrap">
+		<div class="container">
+			<p id="title">
+				<h2 class="title text-success" id="pageTitle"></h2>
+			</p>
+			
+			<div class="row">
+				<div class="span12 lineChart" id="lineChart">
+					<!-- h3 class="title"><i class="icon-signal"></i> &nbsp;&nbsp; CONNECTIONS</h3 -->
+				</div>
+			</div>
+
+			<br>
+			
+			<div class="row">
+				<div class="span12" id="pageList"></div>
+			</div>
+
+		</div>
+	</div>
+
+<div id="footerwrap">
+	<div class="container">
+
+	</div><!-- container -->
+</div><!-- footerwrap -->
+
+
+<script src="http://stalk-io.github.com/js/jquery.min.js"></script>
+<!--[if lte IE 8]><script src="http://stalk-io.github.com/js/excanvas.min.js"></script><![endif]-->
+<script src="http://stalk-io.github.com/js/bootstrap.min.js"></script>
+
+<script src="http://stalk-io.github.com/js/jquery.flot.js"></script>
+<script src="http://stalk-io.github.com/js/jquery.flot.time.js"></script>
+<script src="http://stalk-io.github.com/js/jquery.flot.resize.js"></script>
+<script src="http://stalk-io.github.com/js/jquery.flot.tooltip.min.js"></script>
+
+<script src="http://stalk-io.github.com/js/chart-line.js"></script>
+<script src="http://stalk-io.github.com/js/page-list.js"></script>
+
+<script type="text/javascript">
+
+var S_MON_URL = "http://www.stalk.io:7777/list";
+var S_TIT_URL = "http://stalkmon.appspot.com/title";
+var searchHtml = '<a href="#siteModal" role="button" class="btn btn-small btn-success" data-toggle="modal"><i class="icon-search icon-white"></i>&nbsp;&nbsp;Search</a>';
+
+var S_URL = "";
+var S_CHARSET = "";
+var N_INTERVAL = 1000*3;
+
+function getURLParameter(name) {
+    var u = decodeURI((RegExp(name + '=' + '(.+?)(&|$)').exec(location.search) || [, null])[1]);
+    if (u) {
+        //if(u.indexOf('://') >= 0){
+        //	return u.substr(u.indexOf('://')+3);
+        //}else{
+        return u
+        //}
+    } else {
+        return false;
+    }
+}
+
+function reloadPage(u) {
+
+    var uu = u;
+    if (u.indexOf('://') >= 0) {
+        uu = u.substr(u.indexOf('://') + 3);
+    }
+
+    $.ajax({
+        url: S_MON_URL+'?site=' + uu, //encodeURIComponent(u),
+        data: {},
+        dataType: 'jsonp',
+        crossDomain: 'true',
+        beforeSend: function(xhr) {
+            $('#urlTitle').html(' . . . . ');
+        },
+        error: function(jqXHR, exception) {
+            var errorMessage = "";
+            if (jqXHR.status === 0) {
+                errorMessage = 'Not connect.\n Verify Network.';
+            } else if (jqXHR.status == 404) {
+                errorMessage = 'Requested page not found. [404]';
+            } else if (jqXHR.status == 500) {
+                errorMessage = 'Internal Server Error [500].';
+            } else if (exception === 'parsererror') {
+                errorMessage = 'Requested JSON parse failed.';
+            } else if (exception === 'timeout') {
+                errorMessage = 'Time out error.';
+            } else if (exception === 'abort') {
+                errorMessage = 'Ajax request aborted.';
+            } else {
+                errorMessage = 'Uncaught Error.\n' + jqXHR.responseText;
+            }
+            errorMessage = errorMessage + ' Try again later.';
+        },
+        success: function(data) {
+
+            var totalCnt = PageList.reload(data.count, data.data);
+            LineChart.reload(totalCnt);
+
+            setTimeout("reloadPage('" + u + "')", N_INTERVAL);
+
+        }
+    });
+
+}
+
+function getUrlTitle(u, c) {
+
+	var getTitleUrl = S_TIT_URL+"?q="+u;
+	
+    if (c == "null") {
+    } else {
+    	getTitleUrl = getTitleUrl + "&c="+c;
+    }
+
+   		
+    $.ajax({
+        url: getTitleUrl,
+        data: {},
+        dataType: 'jsonp',
+        crossDomain: 'true',
+        beforeSend: function(xhr) {
+            $('#urlTitle').html(' . . . . ');
+        },
+        error: function(jqXHR, exception) {
+            var errorMessage = "";
+            if (jqXHR.status === 0) {
+                errorMessage = 'Not connect.\n Verify Network.';
+            } else if (jqXHR.status == 404) {
+                errorMessage = 'Requested page not found. [404]';
+            } else if (jqXHR.status == 500) {
+                errorMessage = 'Internal Server Error [500].';
+            } else if (exception === 'parsererror') {
+                errorMessage = 'Requested JSON parse failed.';
+            } else if (exception === 'timeout') {
+                errorMessage = 'Time out error.';
+            } else if (exception === 'abort') {
+                errorMessage = 'Ajax request aborted.';
+            } else {
+                errorMessage = 'Uncaught Error.\n' + jqXHR.responseText;
+            }
+            errorMessage = errorMessage + ' Try again later.';
+        },
+        success: function(data) {
+        	if(data.status == "ok") {
+        		
+        		// @ TODO http 가 없으면 달아 주기!!
+        		
+                $('#pageTitle').html(
+                searchHtml+'&nbsp&nbsp'+u + ' <br><a href="' + u + '" target="_black"><small class="text-info">' + data.title + '</a></small>');
+            }
+        }
+    });
+}
+
+function initPage() {
+	$('#pageTitle').html(searchHtml+'&nbsp&nbsp'+S_URL);
+
+    window.prettyPrint && prettyPrint();
+    LineChart.init('lineChart');
+    PageList.init('pageList', S_URL, S_TIT_URL, S_CHARSET);
+
+    getUrlTitle(S_URL, S_CHARSET);
+
+    reloadPage(S_URL);
+}
+
+$(function() {
+
+	S_URL = getURLParameter("site");
+	S_CHARSET = getURLParameter("charset");
+	
+	$("#doneSiteUrl").click(function(){
+		var urlStr = $("#siteUrl").val();
+
+		if(urlStr.length > 0){
+			S_URL = urlStr;
+
+			var cc = "";
+			if(!$.trim($("#chs").val()).length) {
+			}else{
+				cc = "&charset="+$("#chs").val();
+				S_CHARSET = $("#chs").val();
+			}
+			//initPage();
+			//$('#siteModal').modal('hide');
+			$(location).attr('href', window.location.pathname+'?site='+S_URL+cc);
+			
+		}
+	});
+	
+	$("#siteUrl, #chs").keypress(function(event){
+		var keycode = (event.keyCode ? event.keyCode : event.which);
+		if(keycode == '13'){
+			$("#doneSiteUrl").click();
+		}
+	});
+
+	$('#siteModal').on('shown', function () {
+		$("#siteUrl").focus();
+	});
+	
+	$('#siteModal').on('hidden', function () {
+
+		if(S_URL == "null") {
+			$('#siteModal').modal('show');
+		}
+		
+	});
+    
+	if (S_URL == "null") {
+		$('#siteModal').modal('show');
+	}else{
+		initPage();	
+	}
+    
+}) 
+</script>
+
+</body>
+</html>
