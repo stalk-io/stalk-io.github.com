@@ -37,8 +37,6 @@
 		<div class="navbar-inner">
 			<div class="container">
 				<a class="brand" href="http://www.stalk.io">stalk.io</a>
-				|
-				monitoring page
 			</div>
 		</div>
 	</div>
@@ -64,11 +62,45 @@
 		</div>
 	</div>
 
-<div id="footerwrap">
-	<div class="container">
 
-	</div><!-- container -->
-</div><!-- footerwrap -->
+
+	    <div id="siteModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="siteModalLabel" aria-hidden="true">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+				<h3 id="siteModalLabel">Insert URL &nbsp;<small> for <strong>stalk.io</strong> monitoring</small> </h3>
+			</div>
+			<div class="modal-body">
+				 
+				<br/>
+				<form id="myForm" class="form-horizontal" action="/user" method="post">
+				<div class="control-group error">
+				  <label class="control-label"><strong>URL Address</strong></label>
+				  <div class="controls">
+				    <input type="text" id="siteUrl" placeholder="http://example.com">
+				    <span class="help-inline"><strong>* Essential</strong></span>
+				  </div>
+				</div>
+				<div class="control-group info">
+				  <label class="control-label">Charset</label>
+				  <div class="controls">
+				    <input type="text" id="chs" placeholder="UTF-8">
+				    <span class="help-inline"><small>(Optional)</small></span>
+				  </div>
+				</div>
+				<div class="control-group">
+					<div class="controls">
+						<button id="doneSiteUrl" class="btn btn-info" type="button">Done</button>
+					</div>
+				</div>
+				</form>
+
+			</div>
+			<div class="modal-footer">
+				<button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+			</div>
+		</div>
+	    
+
 
 
 <script src="http://stalk-io.github.com/js/jquery.min.js"></script>
@@ -195,14 +227,14 @@ function getUrlTitle(u, c) {
         		// @ TODO http 가 없으면 달아 주기!!
         		
                 $('#pageTitle').html(
-                searchHtml+'&nbsp&nbsp'+u + ' <br><a href="' + u + '" target="_black"><small class="text-info">' + data.title + '</a></small>');
+                u + '&nbsp&nbsp'+searchHtml+' <br><a href="' + u + '" target="_black"><small class="text-info">' + data.title + '</a></small>');
             }
         }
     });
 }
 
 function initPage() {
-	$('#pageTitle').html(searchHtml+'&nbsp&nbsp'+S_URL);
+	$('#pageTitle').html(S_URL+'&nbsp&nbsp'+searchHtml);
 
     window.prettyPrint && prettyPrint();
     LineChart.init('lineChart');
