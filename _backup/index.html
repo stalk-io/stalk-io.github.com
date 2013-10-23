@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>stalk.io, social live web chat</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="social live web chat">
+	<meta name="author" content="stalk.io">
+
+	<link href="http://stalk-io.github.com/css/bootstrap.min.css" 				rel="stylesheet">
+	<link href="http://stalk-io.github.com/css/bootstrap-responsive.min.css" 	rel="stylesheet">
+	<link href="http://stalk-io.github.com/css/main.css" 						rel="stylesheet">
+	<link href="http://stalk-io.github.com/css/prettify.css"				    rel="stylesheet">
+
+
+	<link href='http://fonts.googleapis.com/css?family=Titillium+Web:400,700,700italic' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+
+	<style>
+	body {
+		padding-top: 60px;
+	}
+	</style>
+
+<!--[if lt IE 9]>
+<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+
+
+</head>
+
+<body>
+
+	<!-- Navigation Bar -->
+	<div class="navbar navbar-inverse navbar-fixed-top">
+		<div class="navbar-inner">
+			<div class="container">
+				<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</a>
+				<a class="brand" href="#">stalk.io</a>
+				<div class="nav-collapse collapse">
+					<ul class="nav">
+						<li class="active"><a href="#">About</a></li>
+						<li><a href="#install">Install</a></li>
+						<li><a href="#contact">Contact</a></li>
+					</ul>
+				</div><!--/.nav-collapse -->
+			</div>
+		</div>
+	</div>
+
+	<section id="about"><br><br></section>
+	<div class="container">
+		<div class="row">
+			<div class="span6">
+				<h1>stalk.io</h1>
+				<h2>live web chat service on your web pages</h2>
+				<p>It’s a useful communication tool for your web sites that lets you create free and multi-user live chat with no Active-X and no plugins, just by very simple installation. <br><br>
+					Anyone who visits the same URL in your web sites can join the chat.
+					<br><br>
+					<div id="fb-root"></div>
+					<script>(function(d, s, id) {
+						var js, fjs = d.getElementsByTagName(s)[0];
+						if (d.getElementById(id)) return;
+						js = d.createElement(s); js.id = id;
+						js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=495434500502378";
+						fjs.parentNode.insertBefore(js, fjs);
+					}(document, 'script', 'facebook-jssdk'));</script>
+					<div class="fb-like" data-href="http://stalk.io" data-send="true" data-layout="button_count" data-width="450" data-show-faces="true"></div>
+
+				</p>
+			</div><!-- span6 -->
+
+			<div class="span6">
+
+				<iframe src="http://player.vimeo.com/video/63335017?title=0&amp;byline=0&amp;portrait=0&amp;color=c9ff23" width="500" height="349" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+			</div><!-- span6 -->
+		</div><!-- row -->
+		<br>
+		<br>
+	</div> <!-- /container -->
+
+	<div id="example">
+		<div class="container">
+			<br>
+			<h2>with Social Network Service</h2>
+			<p>Those who access your web sites will be able to talk to each other after login with <strong>Facebook</strong> / <strong>Twitter</strong> / <strong>Google+</strong>.</p>
+			<img src="http://stalk-io.github.com/img/ss001.png" alt="">
+			<br>
+			<hr>
+			<h2>for Every Web Browsers</h2>
+			<p>This service works in <strong>IE 6+, chrome, safari and all mobile browsers</strong>. <br/><em>" Cross Browser Compatibility "</em><br/></p>
+			<img src="http://stalk-io.github.com/img/ss002.jpg" alt="">
+			<br>
+			<hr>
+			<h2>with Real-time Monitoring</h2>
+			<p>First, <a href="#install">install this live chat service</a>.<br/>
+				And thenm you can check out the status of live connections on your web page.<br>
+				<a href="http://stalkmon.appspot.com" target="_blank">stalkmon.appspot.com</a> (experimental)
+			</p>
+			<img src="http://stalk-io.github.com/img/ss003.png" alt="">
+		</div><!-- container -->
+	</div><!-- example -->
+	<br>
+
+	<section id="install"><br><br>
+		<div id="aboutwrap">
+			<div class="container">
+				<h2>How to install</h2>
+				<h3>Very simple scripts that you can add to your Web pages in minutes, no knowing coding required.
+					Just copy the script code and paste it into your HMTL code</h3>
+					<br>
+					<hr>
+					<br>
+					<div class="row">
+						<div class="span1">
+						</div>
+						<div class="span11">
+							<p>Put the tags and the javascript codes before the last <code>&lt;/body&gt;</code> tag in your HTML page</p>
+							<pre class="prettyprint linenums text-left">
+&lt;script type=&quot;text/javascript&quot; src=&quot;http://www.stalk.io/stalk.js&quot; charset=&quot;utf-8&quot; &gt;&lt;/script&gt;
+&lt;script language=&quot;javascript&quot;&gt;
+	STALK.init();
+&lt;/script&gt;</pre>
+								<p>How <strong>SIMPLE</strong>, isn't it?</p>
+
+
+<!-- br>
+<hr>
+<br>
+<p><b>For test or dynamic installation ? </b><br>Just drag this button <a href="javascript:(function(){var%20s%20=%20document.createElement('script');s.type='text/javascript';document.body.appendChild(s);s.src='http://www.stalk.io/stalk-bookmark.js?' + (+new Date());})();" class="btn btn-inverse">Let's Chat</a> onto your browser's Bookmarks Bar and you'll be ready to chat</p>
+<p>And then, Click the bookmark icon after moving to the other web site you wish.</p -->
+
+</div>
+</div>
+
+</div><!-- End aboutwrap -->
+</div><!-- End Container -->
+<div id="example">
+	<div class="container">
+		<br>
+		<h4>You can install this right where you want it.  For Wordpress, Tumblr, Blogger and your Any Web Sites</h4>
+		<p>
+			You can check out <a href="http://stalk-io.blogspot.com/2013/03/InstallLiveChatServiceForYourBlog.html" target="_blank">this link</a> 
+			or watch <a href="https://vimeo.com/63327878" target="_blank">this video</a> for more detail. 
+		</p>
+
+		<img src="http://stalk-io.github.com/img/si001.png" alt="example for blogger.com">
+
+	</div><!-- container -->
+</div><!-- example -->
+<br>
+</section>
+<section id="contact"></section>
+
+<div id="footerwrap">
+	<div class="container">
+		<br><br>
+		<h2>CONTACT</h2>
+		<br>
+		<div class="row">
+			<div class="span4">
+				<h3>Author Email</h3>
+				<h4><a href="mailto:yohany@gmail.com">yohany@gmail.com</a></h4>
+			</div>
+
+			<div class="span8">
+				<h3>Facebook</h3>
+				<h4><a href="http://www.facebook.com/stalk.io" target="_blank">www.facebook.com/stalk.io</a></h4>
+				<h4><a href="http://www.facebook.com/JohnKim0331" target="_blank">www.facebook.com/JohnKim0331</a></h4>
+			</div>
+
+		</div>
+		<br><br><hr><br>
+
+		<div class="row">
+			<div class="span12">
+				<h4>
+					Please donate to make it available to everyone for free <strong>stalk.io</strong> service.	
+				</h4>
+				<br>
+				<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+					<input type="hidden" name="cmd" value="_s-xclick">
+					<input type="hidden" name="hosted_button_id" value="KNYRHWYU6SAUA">
+					<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+					<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+				</form>
+
+			</div>
+		</div>
+		<br><br>
+
+<!--div class="row">
+<div class="span12">
+<img src="img/logo.png" alt="">
+</div>
+</div>
+<br -->
+
+
+</div><!-- container -->
+</div><!-- footerwrap -->
+
+<script type="text/javascript"><!--
+google_ad_client = "ca-pub-7871858790549175";
+/* stalk-io-lb */
+google_ad_slot = "4942571901";
+google_ad_width = 728;
+google_ad_height = 90;
+//-->
+</script>
+<script type="text/javascript"
+src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+
+
+<script type="text/javascript" src="http://stalk-io.github.com/js/jquery.min.js"></script>
+<script type="text/javascript" src="http://stalk-io.github.com/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="http://stalk-io.github.com/js/prettify.min.js"></script>
+
+
+<script type="text/javascript" charset="utf-8">
+$(document).ready(function(){
+	window.prettyPrint && prettyPrint();
+	$('ul.nav > li').click(function (e) {
+//e.preventDefault();
+$('ul.nav > li').removeClass('active');
+$(this).addClass('active');                
+}); 
+
+});
+</script>
+
+<!-- STALK start -->
+<script type="text/javascript" src="http://www.stalk.io/stalk.js" charset="utf-8"></script><script language="javascript">STALK.init();</script>
+<!-- STALK end -->
+
+
+</body>
+</html>
